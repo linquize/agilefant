@@ -284,9 +284,17 @@ public class NotificationEmailSender implements NotificationBusiness {
         final Set<User> responsibleUsers = new HashSet<User>();
 
         if (notificationEvent.getEntity() instanceof Story) {
-            responsibleUsers.addAll(((Story) notificationEvent.getEntity()).getResponsibles());
+            for (User user: ((Story) notificationEvent.getEntity()).getResponsibles()) {
+                if (user != null) {
+                    responsibleUsers.add(user);
+                }
+            }
         } else if (notificationEvent.getEntity() instanceof Task) {
-            responsibleUsers.addAll(((Task) notificationEvent.getEntity()).getResponsibles());
+            for (User user: ((Task) notificationEvent.getEntity()).getResponsibles()) {
+                if (user != null) {
+                    responsibleUsers.add(user);
+                }
+            }
         }
 
         for (User user : responsibleUsers) {
