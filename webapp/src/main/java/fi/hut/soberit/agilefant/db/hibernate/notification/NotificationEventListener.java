@@ -12,6 +12,7 @@ import fi.hut.soberit.agilefant.business.NotificationBusiness;
 import fi.hut.soberit.agilefant.business.impl.NotificationEmailSender;
 import fi.hut.soberit.agilefant.core.ApplicationContextHolder;
 import fi.hut.soberit.agilefant.model.Story;
+import fi.hut.soberit.agilefant.model.Task;
 import fi.hut.soberit.agilefant.model.notification.NotificationEvent;
 import fi.hut.soberit.agilefant.model.notification.NotificationEventType;
 
@@ -74,6 +75,14 @@ public class NotificationEventListener implements PostInsertEventListener, PostU
             int[] dirtyProperties = postUpdateEvent.getDirtyProperties();
             if (dirtyProperties != null && dirtyProperties.length == 1) {
                 if (postUpdateEvent.getPersister().getPropertyNames()[dirtyProperties[0]] == "treeRank") {
+                    return true;
+                }
+            }
+        }
+        else if (postUpdateEvent.getEntity() instanceof Task) {
+            int[] dirtyProperties = postUpdateEvent.getDirtyProperties();
+            if (dirtyProperties != null && dirtyProperties.length == 1) {
+                if (postUpdateEvent.getPersister().getPropertyNames()[dirtyProperties[0]] == "rank") {
                     return true;
                 }
             }
