@@ -72,7 +72,7 @@ public class NotificationEventListener implements PostInsertEventListener, PostU
     private boolean checkIgnore(PostUpdateEvent postUpdateEvent) {
         if (postUpdateEvent.getEntity() instanceof Story) {
             int[] dirtyProperties = postUpdateEvent.getDirtyProperties();
-            if (dirtyProperties.length == 1) {
+            if (dirtyProperties != null && dirtyProperties.length == 1) {
                 if (postUpdateEvent.getPersister().getPropertyNames()[dirtyProperties[0]] == "treeRank") {
                     return true;
                 }
