@@ -489,7 +489,7 @@
 			<interceptor-ref name="exception"/>
             <interceptor-ref name="i18n"/>
             <interceptor-ref name="fileUpload">
-       			<param name="allowedTypes">application/zip,application/x-zip-compressed,application/x-zip</param>
+       			<param name="allowedTypes">application/zip,application/x-zip-compressed,application/x-zip,application/octet-stream</param>
        			<param name="maximumSize">104857600</param>
   			</interceptor-ref> 
             <interceptor-ref name="params">
