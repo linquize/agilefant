@@ -560,9 +560,27 @@ CreateDialog.User = function() {
   // Create the mock model
   this.model = ModelFactory.createObject(ModelFactory.typeToClassName.user);
   
-  
-  this.initFormConfig();
-  this.init(CreateDialog.configurations.user);
+  var me = this;
+  jQuery.ajax({
+    url: "ajax/teamChooserData.action",
+    type: "post",
+    dataType: "json",
+    success: function(data, status) {
+      var teams = [];
+      try {
+        for (var i = 0; i < data.length; i++) {
+          var team = data[i];
+          team["class"] = ModelFactory.typeToClassName.team;
+          teams.push(team.id);
+        }
+        me.model.setTeams(teams, data);
+      } catch (error) {
+      }
+      me.initFormConfig();
+      me.init(CreateDialog.configurations.user);
+    }
+  });
+
 };
 CreateDialog.User.prototype = new CreateDialogClass();
 CreateDialog.User.columnIndices = {
@@ -573,7 +591,8 @@ CreateDialog.User.columnIndices = {
   password1: 4,
   password2: 5,
   admin:     6,
-  teams:     7
+  teams:     7,
+  warning:   8
 };
 CreateDialog.User.prototype.initFormConfig = function() {
   var config = new DynamicTableConfiguration({
@@ -701,6 +720,20 @@ CreateDialog.User.prototype.initFormConfig = function() {
         showRemoveAllItems: true
         }
   });
+  
+  var warningFunction = function() {
+      if (currentUser.getAdmin()) {
+          return "By default the user is added to all teams.";
+        } else {
+          return "By default the user is added to all teams that you belong to.";
+        }
+  	};
+    config.addColumnConfiguration(CreateDialog.User.columnIndices.warning, {
+        title: "",
+    	cssClass: "warning-text",
+        editable: false,
+        get: warningFunction
+      });
 
 
   this.formConfig = config;
