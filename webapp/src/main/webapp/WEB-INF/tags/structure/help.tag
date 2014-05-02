@@ -13,5 +13,3 @@
 <p style="font-size:14pt">You can read more from the <a href="extendedhelp.action" target="_blank">online help</a>,
 <a href="http://agilefant.com/support/user-guide?utm_campaign=os_version&utm_source=help">user guide</a> and the
 <a href="http://agilefant.com/support/faq/?utm_campaign=os_version&utm_source=help">FAQ</a></p>
-
-<script type="text/javascript">mixpanel.track("help");</script>
