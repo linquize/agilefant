@@ -44,7 +44,10 @@ var jQuery = function( selector, context ) {
 	rnotwhite = /\S/,
 
 	// Used for trimming whitespace
-	rtrim = /^(\s|\u00A0)+|(\s|\u00A0)+$/g,
+	// Broken in Firefox 29:
+	//rtrim = /^(\s|\u00A0)+|(\s|\u00A0)+$/g,
+	// Working in Firefox 29 (code from jQuery v1.10.2) :
+	rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,
 
 	// Match a standalone tag
 	rsingleTag = /^<(\w+)\s*\/?>(?:<\/\1>)?$/,
