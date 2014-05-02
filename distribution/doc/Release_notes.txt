@@ -1,15 +1,22 @@
-Agilefant 3.5.1
+Agilefant 3.5.2
 Release notes
-2014-04-07
+2014-05-02
 --
 
 Please spend a couple of minutes to register your organization at
 http://tinyurl.com/agilefant-registration-2013
 This helps us keep Agilefant open source and free forever!
 
+Agilefant is now available as a hosted cloud version at
+http://agilefant.com/free-trial/
+
 +--------------------+
 |     CHANGESET      |
 +--------------------+
+
+Changes from 3.5.1
+2014-05-02
++ Fixed problem related to Firefox 29: dailywork and iteration views were not loading
 
 Changes from 3.5
 2014-04-07
