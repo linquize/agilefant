@@ -176,7 +176,7 @@
         +tasks.responsibles.id, +tasks.responsibles.initials, +tasks.responsibles.class, -tasks.responsibles.*, 
           +tasks.workingOnTask.user.id, +tasks.workingOnTask.user.initials, +tasks.workingOnTask.user.class, -tasks.workingOnTask.user.*, 
           +tasks
-        +labels.displayName, +labels.class, +labels.id, -labels.*</param>
+        +labels.displayName, +labels.class, +labels.id</param>
       </result>
     </action>
     
