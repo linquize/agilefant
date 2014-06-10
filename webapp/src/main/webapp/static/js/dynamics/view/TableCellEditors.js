@@ -914,6 +914,8 @@ TableEditors.InlineAutocomplete.prototype.init = function(element, model, option
   this.textField = $('<input type="text" />').width(this.options.size).appendTo(this.combobox);
   this._registerEditField(this.textField);
   
+  var me = this;
+  
   this.textField.autocomplete({
     source: jQuery.proxy(function(request, response) {
       response(this._getData(request.term));
@@ -922,6 +924,11 @@ TableEditors.InlineAutocomplete.prototype.init = function(element, model, option
   })
   .click(function() {
     jQuery(this).autocomplete('search', $(this).val());
+  })
+  .change(function() {
+    if (me.textField.val() === undefined || me.textField.val() == "") {
+      me.value = null;
+    }
   });
 
   var me = this;
