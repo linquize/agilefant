@@ -89,6 +89,13 @@ public class SecurityInterceptor implements Interceptor {
                 //these are admin-only operations
                 access = false;
             
+            } else if(actionName.equals("storeUserAndRedirect")) {
+                Map params = req.getParameterMap();
+                boolean attemptAdmin = params.containsKey("user.admin");
+                int id = Integer.parseInt(((String[]) params.get("userId"))[0]);
+                if(id == user.getId() && !attemptAdmin){
+                    access = true;
+                }
             } else if(actionName.equals("storeUser")){
             
                 //check if ID is of current user, and what is being stored

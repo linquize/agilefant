@@ -14,6 +14,14 @@
         <param name="patterns">+teams</param>
       </result>
     </action>
+
+	<action name="storeUserAndRedirect" class="userAction" method="store">
+		<interceptor-ref name="prefetchStack" />
+		<result type="redirectAction">
+			<param name="actionName">../editUser</param>
+			<param name="userId">${userId}</param>
+		</result>
+	</action>
     
     <action name="storeUser" method="store" class="userAction">
       <interceptor-ref name="prefetchStack" />

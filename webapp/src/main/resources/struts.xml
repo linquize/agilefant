@@ -224,14 +224,6 @@
 			<result type="dispatcher">/WEB-INF/jsp/administration/editUser.jsp</result>
 		</action>
 
-		<action name="storeUserAndRedirect" class="userAction" method="store">
-			<interceptor-ref name="prefetchStack" />
-			<result type="redirectAction">
-				<param name="actionName">editUser</param>
-				<param name="userId">${userId}</param>
-			</result>
-		</action>
-
 		<action name="listUsers" class="userAction">
 			<result type="dispatcher">/WEB-INF/jsp/administration/listUsers.jsp
 			</result>
