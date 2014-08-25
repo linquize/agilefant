@@ -33,6 +33,7 @@ import fi.hut.soberit.agilefant.model.Backlog;
 import fi.hut.soberit.agilefant.model.BacklogHistoryEntry;
 import fi.hut.soberit.agilefant.model.BacklogHourEntry;
 import fi.hut.soberit.agilefant.model.ExactEstimate;
+import fi.hut.soberit.agilefant.model.HourEntry;
 import fi.hut.soberit.agilefant.model.Iteration;
 import fi.hut.soberit.agilefant.model.Product;
 import fi.hut.soberit.agilefant.model.Project;
@@ -302,6 +303,11 @@ public class ProjectBusinessImpl extends GenericBusinessImpl<Project> implements
             Set<Task> tasks = new HashSet<Task>();
             for (Task task : tmp.getTasks()) {
                 TaskTO taskTO = new TaskTO(task);
+                long effortSpent = 0;
+                for (HourEntry entry : taskTO.getHourEntries()) {
+                    effortSpent += entry.getMinutesSpent();
+                }
+                taskTO.setEffortSpent(effortSpent);
                 tasks.add(taskTO);
             }
             tmp.setTasks(tasks);
