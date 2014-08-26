@@ -1,4 +1,6 @@
 <%@include file="/WEB-INF/jsp/inc/_taglibs.jsp" %>
+<c:choose>
+<c:when test="${access}">
 <struct:widget name="Story: ${story.name}" widgetId="${widgetId}">
 
   <script type="text/javascript">
@@ -77,3 +79,8 @@
   </div>
   
 </struct:widget>
+</c:when>
+<c:otherwise>
+<div>Missing story metric - You do not have access rights to the story's backlog</div>
+</c:otherwise>
+</c:choose>

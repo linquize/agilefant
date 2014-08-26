@@ -14,7 +14,9 @@ import fi.hut.soberit.agilefant.annotations.PrefetchId;
 import fi.hut.soberit.agilefant.business.AgilefantWidgetBusiness;
 import fi.hut.soberit.agilefant.business.WidgetCollectionBusiness;
 import fi.hut.soberit.agilefant.model.AgilefantWidget;
+import fi.hut.soberit.agilefant.model.User;
 import fi.hut.soberit.agilefant.model.WidgetCollection;
+import fi.hut.soberit.agilefant.security.SecurityUtil;
 
 @Component("portletAction")
 @Scope("prototype")
@@ -129,6 +131,11 @@ public class PortletAction extends ActionSupport implements CRUDAction, ContextA
 
     public List<WidgetCollection> getCollections() {
         return collections;
+    }
+    
+    public boolean getDeleteAccess() {
+        User currentUser = SecurityUtil.getLoggedUser();
+        return currentUser.isAdmin();
     }
 
 }

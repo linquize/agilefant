@@ -1,4 +1,6 @@
 <%@include file="/WEB-INF/jsp/inc/_taglibs.jsp" %>
+<c:choose>
+<c:when test="${access}">
 <struct:widget name="Workload of: ${user.fullName}" widgetId="${widgetId}">
   <div class="widget-top-info">
     <a href="dailyWork.action?userId=${user.id}">View daily work of ${user.fullName}</a>
@@ -17,3 +19,8 @@
   });
   </script>
 </struct:widget>
+</c:when>
+<c:otherwise>
+  <div>Missing user metric - You do not have access rights to the user</div>
+</c:otherwise>
+</c:choose>

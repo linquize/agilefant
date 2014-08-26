@@ -131,6 +131,11 @@ public class SearchBusinessImpl implements SearchBusiness {
         backlogAccessMap.put(bl.getId(), access);
         return access;
     }
+    
+    private boolean checkUserAccess(User user){
+        Boolean access = this.authorizationBusiness.isUserAccessible(user.getId(), SecurityUtil.getLoggedUser());
+        return access;
+    }
 
     public NamedObject searchByReference(String searchTerm) {
         if (searchTerm == null) {
@@ -207,7 +212,9 @@ public class SearchBusinessImpl implements SearchBusiness {
         List<SearchResultRow> result = new ArrayList<SearchResultRow>();
         List<User> users = userDAO.searchByName(searchTerm);
         for(User user : users) {
-            result.add(new SearchResultRow(user.getFullName(), user));
+            if (checkUserAccess(user)) {
+                result.add(new SearchResultRow(user.getFullName(), user));
+            }
         }
         return result;
     }

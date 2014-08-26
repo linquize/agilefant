@@ -140,6 +140,17 @@ public class SecurityInterceptor implements Interceptor {
                     || actionName.equals("storeNewProduct")) {
                 // these are operations available to everyone
                 access = true;
+            } else if ((actionName.equals("retrieveBranchMetrics") || actionName.equals("getStoryHierarchy")) && req.getParameterMap().containsKey("storyId")) {
+                Map params = req.getParameterMap();
+                int storyId = Integer.parseInt(((String[]) params.get("storyId"))[0]);
+                Story story = storyBusiness.retrieve(storyId);
+                if (story.getIteration() != null) {
+                    access = this.authorizationBusiness.isBacklogAccessible(story.getIteration().getId(), user);
+
+                }
+                if (!access && story.getBacklog() != null) {
+                    access = this.authorizationBusiness.isBacklogAccessible(story.getBacklog().getId(), user);
+                }
             } else {
                 // Default case: Try to find a backlog id of some kind to check.
                 

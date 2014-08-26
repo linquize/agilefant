@@ -34,7 +34,12 @@ public class AuthorizationBusinessImpl implements AuthorizationBusiness {
 	@Override
 	@Transactional(readOnly=true)
 	public boolean isBacklogAccessible(int backlogId, User user) {
-		user = this.userBusiness.retrieve(user.getId());		
+		user = this.userBusiness.retrieve(user.getId());
+		
+		if (user.isAdmin()) {
+		    return true;
+		}
+        
         Collection<Team> teams = user.getTeams();
         
         Product product = (backlogBusiness.getParentProduct(backlogBusiness.retrieve(backlogId)));
@@ -63,4 +68,22 @@ public class AuthorizationBusinessImpl implements AuthorizationBusiness {
         }
         return false;
 	}
+	
+    @Override
+    public boolean isUserAccessible(int otherUserId, User user) {
+        user = this.userBusiness.retrieve(user.getId());
+        
+        if (user.isAdmin()) {
+            return true;
+        }
+        
+        for(Team team : user.getTeams()) {
+            for (User otherUser : team.getUsers()) {
+                if (otherUser.getId() == otherUserId) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }

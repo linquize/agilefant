@@ -336,6 +336,7 @@ public class SearchBusinessTest extends MockedTestCase {
         String term = "";
         List<User> res = Arrays.asList(new User());
         
+        expect(authorizationBusiness.isUserAccessible(0, SecurityUtil.getLoggedUser())).andReturn(true).anyTimes();
         expect(userDAO.searchByName(term)).andReturn(res);
         replayAll();
         List<SearchResultRow> actual = searchBusiness.searchUsers(term);

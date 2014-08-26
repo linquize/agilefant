@@ -1,7 +1,10 @@
 <%@include file="/WEB-INF/jsp/inc/_taglibs.jsp"%>
-
+<c:choose>
+<c:when test="${access}">
 <struct:widget name="Iteration: ${iteration.name}"
   widgetId="${widgetId}">
+  
+
 
   <%-- Breadcrumb --%>
   <div class="widget-top-info"><a
@@ -129,3 +132,8 @@
   </table>
 
 </struct:widget>
+</c:when>
+<c:otherwise>
+  <div>Missing iteration metric - You do not have access rights to the iteration</div>
+</c:otherwise>
+</c:choose>

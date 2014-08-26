@@ -1,5 +1,6 @@
 <%@include file="/WEB-INF/jsp/inc/_taglibs.jsp"%>
-
+<c:choose>
+<c:when test="${access}">
 <struct:widget name="Project: ${project.name}"
   widgetId="${widgetId}">
 
@@ -95,4 +96,8 @@
     </tr>
   </table>
 </struct:widget>
-    
+</c:when>
+<c:otherwise>
+  <div>Missing project metric - You do not have access rights to the project</div>
+</c:otherwise>
+</c:choose>

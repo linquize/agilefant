@@ -316,9 +316,11 @@ Change dashboard to
         </table>
         
         <div style="clear: left;">
-          <button class="dynamics-button deletePortfolio" style="width: 20ex;" onclick="deletePortfolio(this); return false;">Delete dashboard</button>
-          <button class="dynamics-button cancelProperties" style="float: right;" onclick="cancelProperties(this); return false;">Cancel</button>
-          <button class="dynamics-button saveProperties" style="float: right;">Save</button>
+          <button class="dynamics-button saveProperties" style="float: left;">Save</button>
+          <button class="dynamics-button cancelProperties" style="float: left;" onclick="cancelProperties(this); return false;">Cancel</button>
+          <c:if test="${deleteAccess}">
+          <button class="dynamics-button deletePortfolio" style="width: 20ex; float: right;" onclick="deletePortfolio(this); return false;">Delete dashboard</button>
+          </c:if>
         </div>
       </ww:form>
     </div>
