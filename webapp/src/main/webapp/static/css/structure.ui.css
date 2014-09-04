@@ -283,6 +283,9 @@ div#footerText label {
   margin-left: 2px !important;
 }
 
+#backlogMenuTree {
+  overflow: auto !important;
+}
 /**
  * SMALL BURNDOWN
  */
