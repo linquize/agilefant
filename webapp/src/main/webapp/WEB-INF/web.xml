@@ -129,6 +129,10 @@
   </listener>
 
   <listener>
+		<listener-class>fi.hut.soberit.agilefant.config.InitJFreeChartsListener</listener-class>
+  </listener>
+
+  <listener>
 		<listener-class>fi.hut.soberit.agilefant.config.BootstrapperListener</listener-class>
 	</listener>
 	
