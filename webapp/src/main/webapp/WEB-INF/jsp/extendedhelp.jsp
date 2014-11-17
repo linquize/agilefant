@@ -8,7 +8,7 @@
 p.infoBox {
   background-color: #ffc;
   width: 50%;
-  
+
   padding: 0.5em;
   margin: 1em;
 
@@ -26,7 +26,7 @@ div.rightHandImage {
 div.rightHandImage img {
   border: 1px solid #ccc;
   padding: 1em;
-  
+
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
@@ -41,7 +41,7 @@ div.rightHandImage p {
 <script>
 $(document).ready(function() {
   window.openProductsMenu = function() {
-    $('#menuAccordion-products').click(); 
+    $('#menuAccordion-products').click();
   };
 });
 </script>
@@ -61,7 +61,7 @@ This help page contains info on Agilefant. You can also read the <a href="http:/
   <li><a href="#backlogStructure">Products, Projects and Iterations</a></li>
   <li><a href="#storiesAndTasks">Stories and Tasks</a></li>
   <li><a href="#creatingUsers">Users and Access Rights</a></li>
-  <li><a href="#additionalViews">Daily Work, Timesheets and the Portfolio & Dashboards View</a></li>
+  <li><a href="#additionalViews">Daily Work, Reporting and the Portfolio & Dashboards View</a></li>
 </ol>
 
 
@@ -70,7 +70,7 @@ This help page contains info on Agilefant. You can also read the <a href="http:/
 <div class="dynamictable ui-widget-content ui-corner-all" id="exampleData">
 
 <div class="ui-widget-header dynamictable-caption dynamictable-caption-block ui-corner-all">
-1. About the example data 
+1. About the example data
 </div>
 <p>
 The Cloud Agilefant is populated with example data: two products, a project with some iterations and a standalone iteration. You can see these in the 'Backlogs' section of the left hand side accordion.
@@ -106,7 +106,7 @@ Start by changing your password:
 <div class="dynamictable ui-widget-content ui-corner-all" id="backlogStructure">
 
 <div class="ui-widget-header dynamictable-caption dynamictable-caption-block ui-corner-all">
-3. Products, Projects and Iterations 
+3. Products, Projects and Iterations
 </div>
 
 <div class="rightHandImage">
@@ -193,7 +193,7 @@ A story is a piece of work that needs to be done. Stories can be created from ea
 <p>
 Tasks are the means of getting the stories done. They can reside
 within a story, or directly in an iteration. While tasks can only be viewed
-and edited in the iteration view, they do not disappear when a story is moved 
+and edited in the iteration view, they do not disappear when a story is moved
 back to the project or product backlogs.
 </p>
 
@@ -202,10 +202,10 @@ back to the project or product backlogs.
 <p>
 The story tree is a view into the product and project backlogs that
 displays how the smaller stories have been refined from the higher
-level epics and features. 
+level epics and features.
 
 <p>
-Stories that have no children are called <em>leaf stories</em>. Iterations can contain only leaf stories; 
+Stories that have no children are called <em>leaf stories</em>. Iterations can contain only leaf stories;
 likewise the Backlog views into products and projects display only the leaf stories.
 </p>
 
@@ -244,7 +244,7 @@ You can also share Iterations as 'read-only'. For further information see the Us
 <div class="dynamictable ui-widget-content ui-corner-all" id="additionalViews">
 
 <div class="ui-widget-header dynamictable-caption dynamictable-caption-block ui-corner-all">
-6. Daily Work, Timesheets and the Portfolio & Dashboards views
+6. Daily Work, Reporting and the Portfolio & Dashboards views
 </div>
 
 <%--
@@ -256,13 +256,13 @@ You can also share Iterations as 'read-only'. For further information see the Us
  --%>
 
 <p>
-The Daily work, Timesheets and Portfolio & Dashboards views can be toggled on or off on the account settings page.</p>
+The Daily work, Reporting and Portfolio & Dashboards views can be toggled on or off on the account settings page.</p>
 
 <h3>Daily Work</h3>
 
 <%@include file="/static/html/help/dailyWorkPopup.html" %>
 
-<h3>Timesheets</h3>
+<h3>Reporting</h3>
 
 <%@include file="/static/html/help/timesheetsPopup.html" %>
 

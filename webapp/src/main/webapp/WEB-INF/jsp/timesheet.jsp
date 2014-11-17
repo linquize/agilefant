@@ -11,7 +11,7 @@ var selectedReportUsers = [];
 $(document).ready(function() {
     var chooserDiv = $("#selectBacklogs");
     var userSel = $("#userSelect");
-    
+
     $("#showOnlyOngoingBacklogs").change(function() {
         if($(this).is(":checked")) {
             chooserDiv.backlogChooser("setDateLimit");
@@ -25,7 +25,7 @@ $(document).ready(function() {
         selectedProjects: ${JSONProjects},
         selectedIterations: ${JSONIterations}
     });
-    
+
     $('#userChooserLink-createStory').click(function() {
       $(window).autocompleteDialog({
         dataType: "usersAndTeams",
@@ -164,8 +164,8 @@ $(document).ready( function() {
         $("#interval").find("[value='"+current+"']").attr("selected","selected");
     } else {
       $(".dateSelectRow").show();
-    } 
-    
+    }
+
     var userTimeZone = getUserTimeZone();
     var userTimeZoneString = getUserTimeZoneString();
     var userTimeZoneDecimalString = "" + userTimeZone;
@@ -202,7 +202,7 @@ $(document).ready(function() {
   $('.timesheetOpenListLink').click(function() {
     var me = $(this);
     var target = $('#' + me.attr('rel'));
-    me.toggleClass('timesheetOpenList-open');    
+    me.toggleClass('timesheetOpenList-open');
     target.toggle();
     return false;
   });
@@ -218,7 +218,7 @@ $(document).ready(function() {
 <div class="dynamictable ui-widget-content ui-corner-all" id="changingPassword">
 
 <div class="ui-widget-header dynamictable-caption dynamictable-caption-block ui-corner-all">
-Timesheets
+Reporting
 </div>
 
 <table>
@@ -331,18 +331,18 @@ Timesheets
 						<tr id="userSelect">
 							<td>Users</td>
 							<td>
-							<div><a id="userChooserLink-createStory" href="#" class="assigneeLink"> <img src="static/img/users.png" /> 
-							 <span id="userListContainer-createStory"> 
-								<c:set var="userCount" value="${fn:length(selectedUsers)}" /> 
-								<c:set var="curUserNo" value="0" /> 
-								<c:if test="${userCount == 0}"> (all) </c:if> 
+							<div><a id="userChooserLink-createStory" href="#" class="assigneeLink"> <img src="static/img/users.png" />
+							 <span id="userListContainer-createStory">
+								<c:set var="userCount" value="${fn:length(selectedUsers)}" />
+								<c:set var="curUserNo" value="0" />
+								<c:if test="${userCount == 0}"> (all) </c:if>
 								<c:forEach items="${selectedUsers}" var="selu">
 								  <input type="hidden" name="userIds" value="${selu.id}" />
 								  <c:set var="curUserNo" value="${curUserNo + 1}" />
                   ${selu.initials}
                   <c:if test="${curUserNo !=  userCount}">,</c:if>
-							   </c:forEach> 
-							  </span> 
+							   </c:forEach>
+							  </span>
 							 </a></div>
 							</td>
 						</tr>
@@ -376,7 +376,7 @@ Timesheets
 <aef:timesheetBacklogNode nodes="${products}" />
 
 </c:if>
- 
+
 
 
 <c:if test="${empty products && !empty selectedBacklogs}">

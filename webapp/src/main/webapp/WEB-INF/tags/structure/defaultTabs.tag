@@ -42,8 +42,8 @@ $(document).ready(function() {
 <li id="navitab-timesheet">
   <a href="timesheet.action">
   <span>
-  <img src="static/img/timesheets.png" alt="Timesheets" />
-  Timesheets
+  <img src="static/img/timesheets.png" alt="Reporting" />
+  Reporting
   </span>
   </a>
 </li>

@@ -18,7 +18,7 @@ $(document).ready(function() {
   dwc.change(function() {
     $('#thresholdDiv').toggle();
   });
-  
+
 });
 //-->
 </script>
@@ -31,15 +31,15 @@ $(document).ready(function() {
   </div>
 
   <div style="margin: 1em 0.5em 0.5em;">
-    
-    <div class="warning-note"> 
+
+    <div class="warning-note">
       <strong>Note!</strong> Modifying these settings will affect all users.
     </div>
-  
+
     <ww:form action="storeSettings.action" method="post">
-  
+
     <h3>Additional views</h3>
-  
+
     <table class="settings-table">
     <tr>
       <td><label for="dailyWorkEnabled">Enable Daily Work</label></td>
@@ -52,16 +52,16 @@ $(document).ready(function() {
       <td><a href="#" class="quickHelpLink" onclick="HelpUtils.openHelpPopup(this,'Portfolio & Dashboards','static/html/help/devPortfolioPopup.html'); return false;">What are Portfolio & Dashboards?</a></td>
     </tr>
     <tr>
-      <td><label for="hourReportingEnabled">Enable Timesheets</label></td>
+      <td><label for="hourReportingEnabled">Enable Reporting</label></td>
       <td><ww:checkbox  name="hourReportingEnabled" fieldValue="true" value="%{hourReportingEnabled}"></ww:checkbox></td>
-      <td><a href="#" class="quickHelpLink" onclick="HelpUtils.openHelpPopup(this,'Timesheets','static/html/help/timesheetsPopup.html'); return false;">What are Timesheets?</a></td>
+      <td><a href="#" class="quickHelpLink" onclick="HelpUtils.openHelpPopup(this,'Reporting','static/html/help/timesheetsPopup.html'); return false;">What is Reporting?</a></td>
     </tr>
     </table>
-    
-    <ww:submit value="Save all" cssClass="dynamics-button"></ww:submit>
-    
 
-    
+    <ww:submit value="Save all" cssClass="dynamics-button"></ww:submit>
+
+
+
     <h3>Story tree</h3>
 
     <style>
@@ -89,16 +89,16 @@ $(document).ready(function() {
       border-radius: 5px;
     }
     ul.storyTreeOrderList li span {
-      vertical-align: middle;    
+      vertical-align: middle;
     }
-    
+
     .backlogDraggable {
       font-size: 80%;
       color: #666;
     }
-    
+
     </style>
-    
+
     <script type="text/javascript">
     $(document).ready(function() {
       var orderInput = $('#storyTreeFieldOrder');
@@ -106,7 +106,7 @@ $(document).ready(function() {
         connectWith: '#storyTreeExcludeThese',
         tolerance: 'pointer',
         update: function() {
-          
+
           var included = [];
           $.each($('#storyTreeIncludeThese > li'), function(k,v) {
             included.push($(v).attr('id'));
@@ -127,7 +127,7 @@ $(document).ready(function() {
     });
     </script>
 
-    <table class="settings-table">    
+    <table class="settings-table">
     <tr>
       <td title="These items will be shown in the story tree">Order of story info</td>
       <td colspan="2" style="height: 3em; min-width: 500px;">
@@ -161,12 +161,12 @@ $(document).ready(function() {
       </td>
     </tr>
     </table>
-    
-    
+
+
     <ww:submit value="Save all" cssClass="dynamics-button"></ww:submit>
-    
+
     <h3>Backlogs</h3>
-    
+
     <table class="settings-table">
     <tr>
       <td><label for="labelsInStoryList">Display labels in story lists</label></td>
@@ -178,15 +178,15 @@ $(document).ready(function() {
         <ww:radio list="#{'false':'as straight line', 'true':'take weekends to account'}" name="weekendsInBurndown" value="%{weekendsInBurndown}"/>
       </td>
     </tr>
-    
+
     </table>
-    
+
     <ww:submit value="Save all" cssClass="dynamics-button"></ww:submit>
-    
-    
-    
+
+
+
     <div style="margin: 0; padding: 0; display: none;" id="thresholdDiv">
-    
+
     <h3>Load thresholds</h3>
     
     <p>Load thresholds are used in displaying the workload in the Daily Work view. To restore default threshold, just leave the field empty.</p>
@@ -219,9 +219,9 @@ $(document).ready(function() {
       <td style="background: rgba(130, 180, 244, 0.7);">&nbsp;</td>
     </tr>
     </table>
-    
+
     <ww:submit value="Save all" cssClass="dynamics-button"></ww:submit>
-    
+
     </div>
     </ww:form>
   </div>
