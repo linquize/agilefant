@@ -14,7 +14,7 @@
   </c:if>
   <c:if test="${!currentUser.admin}">
   	<h2>View user</h2>
-  </c:if> 
+  </c:if>
 </c:otherwise>
 </c:choose>
 
@@ -47,26 +47,26 @@ $(document).ready(function() {
 
 <div id="userSpecificSettingsDiv" class="structure-main-block">
 <div class="dynamictable ui-widget-content ui-corner-all">
-  
+
   <div class="dynamictable-caption dynamictable-caption-block ui-widget-header ui-corner-all">
     User specific settings
-  </div> 
-  
+  </div>
+
   <div class="warning-note">
     <p>These settings only affect <strong>${user.fullName}</strong></p>
   </div>
-  
+
   <ww:form action="ajax/storeUserAndRedirect.action" method="post">
     <ww:hidden name="userId"  />
     <table class="settings-table" style="margin: 0.3em;">
-    
+
       <c:if test="${currentUser.admin}">
       <tr>
         <td>Make this user an Administrator</td>
         <td><ww:checkbox fieldValue="true" name="user.admin"/></td>
       </tr>
       </c:if>
-      
+
       <tr>
         <td>Make this user responsible for the tasks he creates</td>
         <td><ww:radio list="#{'true':'Always','false':'Never'}" name="user.autoassignToTasks"/></td>
@@ -79,7 +79,7 @@ $(document).ready(function() {
         <td>Change the story as started when one of its tasks becomes started</td>
         <td><ww:radio list="#{'always':'Always','ask':'Ask','never':'Never'}" name="user.markStoryStarted"/></td>
       </tr>
-      <%--      
+      <%--
       <tr>
         <td>Automatically mark story branch started</td>
         <td><ww:radio list="#{'always':'Always','ask':'Ask','never':'Never'}" name="user.markStoryBranchStarted"/></td>
@@ -87,11 +87,11 @@ $(document).ready(function() {
       </tr>
       --%>  
     </table>
-    
+
     <input type="submit" class="dynamics-button" value="Save"/>
-    
+
   </ww:form>
-  
+
 </div>
 </div>
 </c:if>

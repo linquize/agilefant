@@ -652,7 +652,7 @@ ModelFactory.prototype._constructProduct = function(id, data) {
 };
 
 /**
- * Internal function to construct a daily work model
+ * Internal function to construct a my work model
  *
  * TODO: Write this
  */

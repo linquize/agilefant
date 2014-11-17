@@ -1,4 +1,3 @@
-
 var HelpUtils = {};
 
 HelpUtils.openHelpPopup = function(link, title, url) {

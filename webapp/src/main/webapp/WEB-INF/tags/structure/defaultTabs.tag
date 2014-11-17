@@ -13,15 +13,15 @@ $(document).ready(function() {
 
 <ul>
 
-<!-- Daily Work -->
+<!-- My work -->
 <c:if test="${settings.dailyWork}">
 
 <li id="navitab-dailyWork">
   <a href="dailyWork.action">
-  <span>
-  <img src="static/img/dailyWork.png" alt="Daily Work" />
-  Daily Work
-  </span>
+    <span>
+      <img src="static/img/dailyWork.png" alt="My work" />
+      My work
+    </span>
   </a>
 </li>
 </c:if>
@@ -41,10 +41,10 @@ $(document).ready(function() {
 <c:if test="${settings.hourReportingEnabled}">
 <li id="navitab-timesheet">
   <a href="timesheet.action">
-  <span>
-  <img src="static/img/timesheets.png" alt="Reporting" />
-  Reporting
-  </span>
+    <span>
+      <img src="static/img/timesheets.png" alt="Reporting" />
+      Reporting
+    </span>
   </a>
 </li>
 </c:if>
@@ -54,10 +54,10 @@ $(document).ready(function() {
 <c:if test="${settings.devPortfolio}">
 <li id="navitab-portfolio">
   <a href="contextView.action?contextName=portfolio">
-  <span>
-  <img src="static/img/portfolio.png" alt="Dev Dashboard" />
-  Dashboards
-  </span>
+    <span>
+      <img src="static/img/portfolio.png" alt="Dashboards" />
+      Dashboards
+    </span>
   </a>
 </li>
 </c:if>

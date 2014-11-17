@@ -42,9 +42,9 @@ $(document).ready(function() {
 
     <table class="settings-table">
     <tr>
-      <td><label for="dailyWorkEnabled">Enable Daily Work</label></td>
+      <td><label for="dailyWorkEnabled">Enable My work</label></td>
       <td><ww:checkbox id="dailyWorkCheckbox" name="dailyWorkEnabled" fieldValue="true" value="%{dailyWorkEnabled}"></ww:checkbox></td>
-      <td><a href="#" class="quickHelpLink" onclick="HelpUtils.openHelpPopup(this,'Daily Work','static/html/help/dailyWorkPopup.html'); return false;">What is Daily Work?</a></td>
+      <td><a href="#" class="quickHelpLink" onclick="HelpUtils.openHelpPopup(this,'My work','static/html/help/dailyWorkPopup.html'); return false;">What is My work?</a></td>
     </tr>
     <tr>
       <td><label for="devPortfolioEnabled">Enable Dashboards</label></td>

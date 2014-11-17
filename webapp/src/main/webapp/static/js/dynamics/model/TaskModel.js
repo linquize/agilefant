@@ -7,7 +7,7 @@
  * <p>
  * Calls the <code>initialize</code> method of the super class
  * <code>CommonModel</code>.
- * 
+ *
  * @constructor
  * @base CommonModel
  * @see CommonModel
@@ -39,7 +39,7 @@ var TaskModel = function TaskModel() {
   };
   this.transientData.workingOnTaskIds = [];
   this.metricFields = ["effortLeft", "originalEstimate", "effortSpent"];
-  
+
   this.clonedModelTypes = [ ModelFactory.types.workQueueTask ];
 };
 
@@ -58,18 +58,18 @@ TaskModel.prototype._setData = function(newData) {
   if (newData.id) {
     this.id = newData.id;
   }
-  
+
   if (newData.responsibles) {
     this._updateRelations(ModelFactory.types.user, newData.responsibles);
   }
-  
+
   if (newData.workingOnTask) {
     var workingOnTaskIds= [];
-    
+
     $.each(newData.workingOnTask, function (k, v) {
       workingOnTaskIds.push(v.id);
     });
-    
+
     this.transientData.workingOnTaskIds = workingOnTaskIds;
   }
   if(newData.story) {
@@ -96,10 +96,10 @@ TaskModel.prototype.reload = function() {
 };
 TaskModel.prototype._saveData = function(id, changedData) {
   var me = this;
-  
+
   var url = "ajax/storeTask.action";
   var data = {};
-  
+
   var responsibleData = {};
 
   if (changedData.responsiblesChanged) {
@@ -108,17 +108,17 @@ TaskModel.prototype._saveData = function(id, changedData) {
     delete changedData.responsiblesChanged;
     delete changedData.responsibles;
   }
-  
+
   if (changedData.storyToStarted) {
     data.storyToStarted = true;
     delete changedData.storyToStarted;
     delete this.currentData.storyToStarted;
   }
-  
+
   data.task = changedData;
 
-  
-  
+
+
   if (id) {
     data.taskId = id;
 
@@ -148,15 +148,15 @@ TaskModel.prototype._saveData = function(id, changedData) {
       data.iterationId = changedData.backlogId;
     }
   }
-  
-  data = HttpParamSerializer.serialize(data); 
-  
+
+  data = HttpParamSerializer.serialize(data);
+
   if (responsibleData.responsiblesChanged) {
     data.responsiblesChanged = true;
     data.newResponsibles     = responsibleData.newResponsibles;
   }
 
-  
+
   jQuery.ajax({
     type: "POST",
     url: url,
@@ -225,13 +225,13 @@ TaskModel.prototype._remove = function(successCallback, extraData) {
 
 TaskModel.prototype.moveToIteration = function(iterationId) {
   var oldParent = this.getParent();
-  
+
   var me = this;
   var data = {
     "taskId": this.getId(),
     "iterationId": iterationId
   };
-  
+
   jQuery.ajax({
     type:     "POST",
     url:      "ajax/moveTask.action",
@@ -240,20 +240,20 @@ TaskModel.prototype.moveToIteration = function(iterationId) {
     dataType: "json",
     data:     data,
     success:  function(data, status) {
-      MessageDisplay.Ok("Task moved");  
-      
+      MessageDisplay.Ok("Task moved");
+
       me.relations.backlog = null;
       me.relations.story = null;
 
       me._setData(data);
-      
+
       var newParent = me.getParent();
-      
+
       oldParent.removeRelation(me);
       newParent.callListeners(new DynamicsEvents.RelationUpdatedEvent(newParent, "task"));
-      
+
       me.callListeners(new DynamicsEvents.RelationUpdatedEvent(me, "parent"));
-      
+
       me.callListeners(new DynamicsEvents.EditEvent(me));
     },
     error: function(xhr, status) {
@@ -268,16 +268,16 @@ TaskModel.prototype.setRank = function(newRank) {
 
 TaskModel.prototype.rankUnder = function(rankUnderId, moveUnder) {
   var me = this;
-  
+
   var data = {
     taskId: me.getId(),
     rankUnderId: rankUnderId
   };
-  
+
   // If the item was moved
   if (moveUnder && moveUnder !== me.getParent()) {
     if (moveUnder instanceof IterationModel) {
-      data.iterationId = moveUnder.getId();  
+      data.iterationId = moveUnder.getId();
     }
     else if (moveUnder instanceof StoryModel) {
       data.storyId = moveUnder.getId();
@@ -285,7 +285,7 @@ TaskModel.prototype.rankUnder = function(rankUnderId, moveUnder) {
   }
   else {
     if (me.getParent() instanceof IterationModel) {
-      data.iterationId = me.getParent().getId();  
+      data.iterationId = me.getParent().getId();
     }
     else if (me.getParent() instanceof StoryModel) {
       data.storyId = me.getParent().getId();
@@ -335,7 +335,7 @@ TaskModel.prototype.getIteration = function() {
 
 TaskModel.prototype.addToMyWorkQueue = function(successCallback) {
     var me = this;
-   
+
     jQuery.ajax({
         type: "POST",
         url: "ajax/addToWorkQueue.action",
@@ -374,7 +374,7 @@ TaskModel.prototype.removeFromMyWorkQueue = function(successCallback) {
         },
         success: function(data,status) {
             MessageDisplay.Ok("Task removed from your task queue");
-            
+
             me.setData(data);
             if (successCallback) {
                successCallback();
@@ -504,10 +504,10 @@ TaskModel.prototype.getAnnotatedResponsibles = function() {
 TaskModel.prototype.setResponsibles = function(userIds, userJson) {
   if (userJson) {
     $.each(userJson, function(k,v) {
-      ModelFactory.updateObject(v);    
+      ModelFactory.updateObject(v);
     });
   }
-  
+
   this.currentData.responsibles = userIds;
   this.currentData.responsiblesChanged = true;
 };
@@ -529,7 +529,7 @@ TaskModel.prototype.addResponsible = function(userId) {
   else {
     this.currentData.responsibles = [userId];
   }
-  
+
   this.currentData.responsiblesChanged = true;
 };
 
@@ -541,7 +541,7 @@ TaskModel.prototype.getEffortSpent = function() {
 
 /**
  * Get context info.
- * Used at Daily Work
+ * Used at My work
  */
 TaskModel.prototype.getContext = function() {
   var parent = this.getParent();
