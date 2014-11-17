@@ -56,7 +56,7 @@ $(document).ready(function() {
   <a href="contextView.action?contextName=portfolio">
   <span>
   <img src="static/img/portfolio.png" alt="Dev Dashboard" />
-  Portfolio & Dashboards
+  Dashboards
   </span>
   </a>
 </li>

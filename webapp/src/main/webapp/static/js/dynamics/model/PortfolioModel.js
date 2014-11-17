@@ -1,5 +1,5 @@
 /**
- * Transient container class for portfolio projects
+ * Transient container class for dashboard projects
  * @constructor
  * @base CommonModel
  */
@@ -28,7 +28,7 @@ PortfolioModel.Validators = {
     dateValidator: function(model) {
       var start = PortfolioModel.Validators._parseDate(model.getStartDate());
       var end   = PortfolioModel.Validators._parseDate(model.getEndDate());
-      
+
       if (start.after(end)) {
         throw "Start date must be before end date";
       }
@@ -74,7 +74,7 @@ PortfolioModel.prototype.reload = function() {
     error: function(xhr, status, error) {
       var msg = MessageDisplay.ErrorMessage("Error loading dashboard.", xhr);
     }
-  });  
+  });
 };
 
 PortfolioModel.prototype.getRankedProjects = function() {

@@ -2,7 +2,7 @@ var PortfolioController = function PortfolioController(options) {
   this.rankedProjectsElement = options.rankedProjectsElement;
   this.unrankedProjectsElement = options.unrankedProjectsElement;
   this.timelineElement = options.timelineElement;
-  
+
   this.init();
   this.initConfig();
   this.paint();
@@ -14,7 +14,7 @@ var PortfolioController = function PortfolioController(options) {
 PortfolioController.prototype = new CommonController();
 
 /**
- * Initialize and render the portfolio contents
+ * Initialize and render the dashboard contents
  */
 PortfolioController.prototype.paint = function() {
   var me = this;
@@ -42,7 +42,7 @@ PortfolioController.prototype.pageLayout = function() {
     this.timelineElement.parent().show();
     this.rankedProjectsElement.show();
   }
-  
+
   if(this.model.getUnrankedProjects().length === 0) {
     this.unrankedProjectsElement.hide();
   } else {
@@ -114,7 +114,7 @@ PortfolioController.prototype.paintTimeline = function() {
   this.eventSource = eventSource;
   var theme = Timeline.ClassicTheme.create();
   theme.timeline_start = this.model.startDate;
-  theme.timeline_stop = this.model.endDate;  
+  theme.timeline_stop = this.model.endDate;
   theme.event.duration.impreciseOpacity = 0;
   theme.event.track.height = 30;
   theme.mouseWheel = null;
@@ -129,11 +129,11 @@ PortfolioController.prototype.paintTimeline = function() {
         eventPainter: Timeline.ClickEventPainter
       })
   ];
-  
+
   eventSource.setModel(this.model);
   this.timeline = Timeline.create(this.timelineElement[0], bandInfos);
   eventSource.loadData();
-  
+
   var me = this;
   $(window).resize(function() {
     var pixelSize = me._calculateTimelineUnitSize();
@@ -165,7 +165,7 @@ PortfolioController.prototype.initConfig = function() {
     }
   });
   var columns = [];
-  
+
   columns.push({
     minWidth : 3,
     autoScale : true,
@@ -181,7 +181,7 @@ PortfolioController.prototype.initConfig = function() {
       set : ProjectModel.prototype.setStatus,
       items : DynamicsDecorators.projectStates
     }
-  }); 
+  });
   columns.push({
     minWidth : 26,
     autoScale : true,
@@ -239,7 +239,7 @@ PortfolioController.prototype.initConfig = function() {
       withTime: true,
       required: true
     }
-  }); 
+  });
   columns.push({
     minWidth : 10,
     autoScale : true,
@@ -259,14 +259,14 @@ PortfolioController.prototype.initConfig = function() {
       required: true
     }
   });
-  
+
   config.addColumnConfiguration(PortfolioRowController.columnIndices.status, columns[0]);
   config.addColumnConfiguration(PortfolioRowController.columnIndices.name, columns[1]);
-  config.addColumnConfiguration(PortfolioRowController.columnIndices.product, columns[2]);   
+  config.addColumnConfiguration(PortfolioRowController.columnIndices.product, columns[2]);
   config.addColumnConfiguration(PortfolioRowController.columnIndices.assignees, columns[3]);
   config.addColumnConfiguration(PortfolioRowController.columnIndices.startDate, columns[4]);
-  config.addColumnConfiguration(PortfolioRowController.columnIndices.endDate, columns[5]);   
-  
+  config.addColumnConfiguration(PortfolioRowController.columnIndices.endDate, columns[5]);
+
   config.addColumnConfiguration(PortfolioRowController.columnIndices.actions,{
 	    minWidth : 6,
 	    autoScale : true,
@@ -275,8 +275,8 @@ PortfolioController.prototype.initConfig = function() {
 	    subViewFactory: PortfolioRowController.prototype.moveToUnrankedButtonFactory
 	  });
 
-  this.rankedProjectsConfig = config; 
-  
+  this.rankedProjectsConfig = config;
+
   config = new DynamicTableConfiguration( {
     rowControllerFactory : PortfolioController.prototype.portfolioRowControllerFactory,
     dataSource : PortfolioModel.prototype.getUnrankedProjects,
@@ -289,10 +289,10 @@ PortfolioController.prototype.initConfig = function() {
   });
   config.addColumnConfiguration(PortfolioRowController.columnIndices.status, columns[0]);
   config.addColumnConfiguration(PortfolioRowController.columnIndices.name, columns[1]);
-  config.addColumnConfiguration(PortfolioRowController.columnIndices.product, columns[2]);   
+  config.addColumnConfiguration(PortfolioRowController.columnIndices.product, columns[2]);
   config.addColumnConfiguration(PortfolioRowController.columnIndices.assignees, columns[3]);
   config.addColumnConfiguration(PortfolioRowController.columnIndices.startDate, columns[4]);
-  config.addColumnConfiguration(PortfolioRowController.columnIndices.endDate, columns[5]);  
+  config.addColumnConfiguration(PortfolioRowController.columnIndices.endDate, columns[5]);
 
   config.addColumnConfiguration(PortfolioRowController.columnIndices.actions, {
 	    minWidth : 6,
@@ -300,7 +300,7 @@ PortfolioController.prototype.initConfig = function() {
 	    title : "Actions",
 	    headerTooltip : 'Move to ranked projects',
 	    subViewFactory: PortfolioRowController.prototype.moveToRankedButtonFactory
-	  }); 
-    
+	  });
+
   this.unrankedProjectsConfig = config;
 };

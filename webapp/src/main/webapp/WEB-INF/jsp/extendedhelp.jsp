@@ -61,7 +61,7 @@ This help page contains info on Agilefant. You can also read the <a href="http:/
   <li><a href="#backlogStructure">Products, Projects and Iterations</a></li>
   <li><a href="#storiesAndTasks">Stories and Tasks</a></li>
   <li><a href="#creatingUsers">Users and Access Rights</a></li>
-  <li><a href="#additionalViews">Daily Work, Reporting and the Portfolio & Dashboards View</a></li>
+  <li><a href="#additionalViews">Daily Work, Reporting, and Dashboards View</a></li>
 </ol>
 
 
@@ -244,7 +244,7 @@ You can also share Iterations as 'read-only'. For further information see the Us
 <div class="dynamictable ui-widget-content ui-corner-all" id="additionalViews">
 
 <div class="ui-widget-header dynamictable-caption dynamictable-caption-block ui-corner-all">
-6. Daily Work, Reporting and the Portfolio & Dashboards views
+6. Daily Work, Reporting and Dashboards views
 </div>
 
 <%--
@@ -256,7 +256,8 @@ You can also share Iterations as 'read-only'. For further information see the Us
  --%>
 
 <p>
-The Daily work, Reporting and Portfolio & Dashboards views can be toggled on or off on the account settings page.</p>
+The Daily work, Reporting and Dashboards views can be toggled on or off on the account settings page.
+</p>
 
 <h3>Daily Work</h3>
 
@@ -266,7 +267,7 @@ The Daily work, Reporting and Portfolio & Dashboards views can be toggled on or 
 
 <%@include file="/static/html/help/timesheetsPopup.html" %>
 
-<h3>Portfolio & Dashboards</h3>
+<h3>Dashboards</h3>
 
 <%@include file="/static/html/help/devPortfolioPopup.html" %>
 

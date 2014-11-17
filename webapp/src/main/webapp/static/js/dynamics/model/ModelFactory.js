@@ -1,7 +1,7 @@
 
 /**
  * A static class for constructing model objects for <code>Dynamics</code>
- * 
+ *
  * @see CommonModel
  * @constructor
  */
@@ -9,20 +9,20 @@ ModelFactory = function ModelFactory() {
   this.rootObject = null;
   this.data = {
     backlog: {},
-    
+
     story: {},
     task: {},
-    
+
     assignment: {},
     hourEntry: {},
-    
+
     user: {},
     team: {},
-    
+
     product: {},
-    
+
     label: {},
-    
+
     workQueueTask: {}
   };
 };
@@ -35,7 +35,7 @@ ModelFactory.instance = null;
  * Utility map to convert persisted class names, e.g.
  * "fi.hut.soberit.agilefant.model.Story" to types understood by the
  * <code>ModelFactory</code>.
- * 
+ *
  * @member ModelFactory
  */
 ModelFactory.classNameToType = {
@@ -43,86 +43,86 @@ ModelFactory.classNameToType = {
   "fi.hut.soberit.agilefant.model.Iteration": "backlog",
   "fi.hut.soberit.agilefant.model.Product":   "backlog",
   "fi.hut.soberit.agilefant.model.Project":   "backlog",
-  
+
   "fi.hut.soberit.agilefant.transfer.ProjectTO":   "backlog",
   "fi.hut.soberit.agilefant.transfer.ProductTO":   "backlog",
   "fi.hut.soberit.agilefant.transfer.IterationTO": "backlog",
-  
+
   "fi.hut.soberit.agilefant.model.Story":        "story",
   "fi.hut.soberit.agilefant.transfer.StoryTO":   "story",
   "fi.hut.soberit.agilefant.model.Task":         "task",
   "fi.hut.soberit.agilefant.transfer.TaskTO":    "task",
-    
+
   "fi.hut.soberit.agilefant.model.User":         "user",
   "fi.hut.soberit.agilefant.model.Team":         "team",
-    
+
   "fi.hut.soberit.agilefant.model.Assignment":   "assignment",
   "fi.hut.soberit.agilefant.transfer.AssignmentTO":   "assignment",
-  
+
   "fi.hut.soberit.agilefant.model.HourEntry":       "hourEntry",
   "fi.hut.soberit.agilefant.model.BacklogHourEntry": "hourEntry",
   "fi.hut.soberit.agilefant.model.StoryHourEntry":  "hourEntry",
   "fi.hut.soberit.agilefant.model.TaskHourEntry":   "hourEntry",
-  
+
   "fi.hut.soberit.agilefant.model.Label": "label",
-  
+
   "fi.hut.soberit.agilefant.transfer.DailyWorkTaskTO": "workQueueTask"
 };
 
 /**
  * Convert persisted class names to Javascript classes
- * 
+ *
  * @member ModelFactory
  */
 ModelFactory.classNameToJsClass = {
     "fi.hut.soberit.agilefant.model.Iteration":       IterationModel,
     "fi.hut.soberit.agilefant.model.Project":         ProjectModel,
     "fi.hut.soberit.agilefant.model.Product":         ProductModel,
-    
+
     "fi.hut.soberit.agilefant.transfer.IterationTO":  IterationModel,
     "fi.hut.soberit.agilefant.transfer.ProjectTO":    ProjectModel,
     "fi.hut.soberit.agilefant.transfer.ProductTO":    ProductModel,
-    
+
     "fi.hut.soberit.agilefant.model.Story":           StoryModel,
     "fi.hut.soberit.agilefant.transfer.StoryTO":      StoryModel,
     "fi.hut.soberit.agilefant.model.Task":            TaskModel,
     "fi.hut.soberit.agilefant.transfer.TaskTO":       TaskModel,
-        
+
     "fi.hut.soberit.agilefant.model.User":            UserModel,
     "fi.hut.soberit.agilefant.model.Team":            TeamModel,
-      
+
     "fi.hut.soberit.agilefant.model.Assignment":      AssignmentModel,
     "fi.hut.soberit.agilefant.transfer.AssignmentTO":      AssignmentModel,
-    
+
     "fi.hut.soberit.agilefant.model.HourEntry":       HourEntryModel,
     "fi.hut.soberit.agilefant.model.BacklogHourEntry": HourEntryModel,
     "fi.hut.soberit.agilefant.model.StoryHourEntry":  HourEntryModel,
     "fi.hut.soberit.agilefant.model.TaskHourEntry":   HourEntryModel,
     "fi.hut.soberit.agilefant.model.Label": LabelModel,
-    
+
     "fi.hut.soberit.agilefant.transfer.DailyWorkTaskTO": WorkQueueTaskModel
 };
 
 ModelFactory.typeToClassName = {
     backlog:    "fi.hut.soberit.agilefant.model.Backlog",
     iteration:  "fi.hut.soberit.agilefant.model.Iteration",
-    
+
     product:    "fi.hut.soberit.agilefant.model.Product",
     project:    "fi.hut.soberit.agilefant.model.Project",
-    
+
 
     story:      "fi.hut.soberit.agilefant.model.Story",
     task:       "fi.hut.soberit.agilefant.model.Task",
-      
+
     user:       "fi.hut.soberit.agilefant.model.User",
     team:       "fi.hut.soberit.agilefant.model.Team",
-      
+
     assignment: "fi.hut.soberit.agilefant.model.Assignment",
-    
+
     hourEntry:  "fi.hut.soberit.agilefant.model.HourEntry",
-    
+
     label: "fi.hut.soberit.agilefant.model.Label"
-      
+
 };
 
 ModelFactory.typeToLazyLoadingUri = {
@@ -153,14 +153,14 @@ ModelFactory.types = {
     product:    "backlog",
     /** @member ModelFactory */
     project:    "backlog",
-    
+
     /** @member ModelFactory */
     story:      "story",
     /** @member ModelFactory */
     task:       "task",
     /** @member ModelFactory */
     workQueueTask: "workQueueTask",
-    
+
     /** @member ModelFactory */
     user:       "user",
     /** @member ModelFactory */
@@ -209,10 +209,10 @@ ModelFactory.getInstance = function() {
  * model objects.
  * <p>
  * Invokes the actual AJAX requests to fetch the data.
- * 
+ *
  * @param {String} type the type of the object to initialize the dataset for
  * @param {int} id the id number of the object to initialize the dataset for
- * 
+ *
  * @throws {TypeError} if type not recognized, null or undefined; if id null or undefined
  * @see ModelFactory.types
  */
@@ -263,9 +263,9 @@ ModelFactory.callEvery = function(time, func) {
 
 /**
  * Adds an object to the <code>ModelFactory</code>'s data.
- * 
+ *
  * @param objectToAdd An instance of model class inherited from <code>CommonModel</code>.
- * @throws {TypeError} if null or undefined. 
+ * @throws {TypeError} if null or undefined.
  * @throws {TypeError} if class not recognized.
  * @see CommonModel
  */
@@ -285,25 +285,25 @@ ModelFactory.addObject = function(objectToAdd) {
  * @return the object
  * @see ModelFactory.types
  * @see CommonModel#getId
- * 
+ *
  * @throws {TypeError} if no such type
- * @throws {Error} if not found 
+ * @throws {Error} if not found
  */
 ModelFactory.getObject = function(type, id) {
   var obj = ModelFactory.getObjectIfExists(type, id);
   if (!obj) {
     throw new Error("Not found");
   }
-  return obj; 
+  return obj;
 };
 
 /**
  * Gets the object of the given type and id.
  * <p>
  * @return the object, null if doesn't exist
- * 
+ *
  * @throws {TypeError} if type not recognized
- * 
+ *
  * @see ModelFactory.types
  * @see CommonModel#getId
  */
@@ -318,9 +318,9 @@ ModelFactory.getObjectIfExists = function(type, id) {
  * Gets the object of the given type and id.
  * <p>
  * @return the object, null if doesn't exist
- * 
+ *
  * @throws {TypeError} if type not recognized
- * 
+ *
  * @see ModelFactory.types
  * @see CommonModel#getId
  */
@@ -329,9 +329,9 @@ ModelFactory.getOrRetrieveObject = function(type, id, callback, error) {
     if (!(type in ModelFactory.types)) {
       throw new TypeError("Type not recognized");
     }
-    
+
     var objectType = ModelFactory.classNameToType[ModelFactory.typeToClassName[type]];
-    
+
     var object = factory._getObject(objectType, id);
     if (! object) {
         object = factory.retrieveLazily(type, id, callback, error);
@@ -353,7 +353,7 @@ ModelFactory.createObject = function(clazz) {
     throw new TypeError("Invalid type");
   }
   else if (clazz in ModelFactory.types) {
-    return ModelFactory.getInstance()._createObject(ModelFactory.typeToClassName[clazz]);  
+    return ModelFactory.getInstance()._createObject(ModelFactory.typeToClassName[clazz]);
   }
   return ModelFactory.getInstance()._createObject(clazz);
 };
@@ -364,14 +364,14 @@ ModelFactory.createObject = function(clazz) {
  * <p>
  * If object with the given id already exists, will overwrite it.
  * Otherwise, creates a new one.
- * 
+ *
  * @param {Object} data the object's data, including the id
  * @param {Boolean} suppressEvents Suppress possible edit events.
- * 
+ *
  * @return {CommonModel} returns the object with the corresponding type
- * 
+ *
  * @throws {String "Illegal argument for ModelFactory.updateObject"} if arguments are faulty
- * 
+ *
  * @see ModelFactory.types
  * @see CommonModel
  */
@@ -389,10 +389,10 @@ ModelFactory.updateObject = function(data, suppressEvents) {
     instance._addObject(object);
   }
   object.setData(data, suppressEvents);
-  
+
   // Update clone models
   instance._updateCloneModels(object, data);
-  
+
   return object;
 };
 
@@ -404,7 +404,7 @@ ModelFactory.initUsers = function(callback) {
 };
 
 /**
- * Get project portfolio data with an ajax query and create a PortfolioModel instance.
+ * Get project dashboard data with an ajax query and create a PortfolioModel instance.
  */
 ModelFactory.initProjectPortfolio = function(callback) {
   ModelFactory.getInstance()._initProjectPortfolio(callback);
@@ -504,7 +504,7 @@ ModelFactory.prototype._getData = function(type, id, callback) {
       callback: me._constructUser
     }
   };
-  
+
   jQuery.getJSON(
       dataParams[type].url,
       dataParams[type].params,
@@ -524,7 +524,7 @@ ModelFactory.prototype._getData = function(type, id, callback) {
  */
 ModelFactory.prototype._initUsers = function(callback) {
   var me = this;
-  
+
   jQuery.ajax({
     type: "POST",
     dataType: "json",
@@ -653,7 +653,7 @@ ModelFactory.prototype._constructProduct = function(id, data) {
 
 /**
  * Internal function to construct a daily work model
- * 
+ *
  * TODO: Write this
  */
 ModelFactory.prototype._constructDailyWork = function(id, data) {
@@ -678,7 +678,7 @@ ModelFactory.prototype._removeObject = function(type, id) {
  * <p>
  * Listens to <code>DynamicsEvents</code> and propagates them
  * to <code>PageController</code>.
- * 
+ *
  * @see DynamicsEvents.EditEvent
  * @see DynamicsEvents.DeleteEvent
  * @see PageController#pageListener
@@ -689,7 +689,7 @@ ModelFactory.listener = function(event) {
         ModelFactory.classNameToType[event.getObject().getPersistedClass()],
         event.getObject().getId());
   }
-  
+
   if (PageController.getInstance()) {
     PageController.getInstance().pageListener(event);
   }
@@ -697,14 +697,14 @@ ModelFactory.listener = function(event) {
 
 ModelFactory.prototype.retrieveLazily = function(type, id, callback, errorCallback) {
     var urlInfo = ModelFactory.typeToLazyLoadingUri[type];
-    
+
     if (! urlInfo) {
         throw new TypeError("Type " + type + " cannot be loaded lazily");
     }
-    
+
     var data = {};
     data[urlInfo.idParam] = id;
-    
+
     jQuery.getJSON(
         urlInfo.uri,
         data,
