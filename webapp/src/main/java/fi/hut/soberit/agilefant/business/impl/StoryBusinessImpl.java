@@ -564,6 +564,7 @@ public class StoryBusinessImpl extends GenericBusinessImpl<Story> implements
         }
         
         moveStory(story, backlog);
+        updateHistories(backlog, story.getBacklog(), story.getIteration());
     }
     
     public void moveStoryAndChildren(Story story, Backlog backlog) {
@@ -580,14 +581,24 @@ public class StoryBusinessImpl extends GenericBusinessImpl<Story> implements
                 storyHierarchyBusiness.updateChildrenTreeRanks(oldParent);
             }
         }
-        recursiveMoveStory(story, backlog);
+        Set<Backlog> storyBacklogs = new HashSet<Backlog>();
+        Set<Iteration> storyIterations = new HashSet<Iteration>();
+        recursiveMoveStory(story, backlog, storyBacklogs, storyIterations);
+        for (Backlog storyBacklog : storyBacklogs) {
+            updateHistories(backlog, storyBacklog, null);
+        }
+        for (Iteration storyIteration : storyIterations) {
+            updateHistories(backlog, null, storyIteration);
+        }
     }
     
-    private void recursiveMoveStory(Story story, Backlog backlog) {
+    private void recursiveMoveStory(Story story, Backlog backlog, Set<Backlog> storyBacklogs, Set<Iteration> storyIterations) {
         for(Story child : story.getChildren()) {
-            recursiveMoveStory(child, backlog);
+            recursiveMoveStory(child, backlog, storyBacklogs, storyIterations);
         }
         moveStory(story, backlog);
+        if (story.getBacklog() != null) storyBacklogs.add(story.getBacklog());
+        if (story.getIteration() != null) storyIterations.add(story.getIteration());
     }
     
     public void moveSingleStoryToBacklog(Story story, Backlog backlog) {
@@ -619,6 +630,7 @@ public class StoryBusinessImpl extends GenericBusinessImpl<Story> implements
             }
         }
         moveStory(story, backlog);
+        updateHistories(backlog, story.getBacklog(), story.getIteration());
     }
 
     
@@ -651,7 +663,6 @@ public class StoryBusinessImpl extends GenericBusinessImpl<Story> implements
         }
 
         storyDAO.store(story);
-        updateHistories(target, oldBacklog, oldIteration);
     }
 
 
