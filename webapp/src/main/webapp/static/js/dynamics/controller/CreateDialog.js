@@ -623,6 +623,7 @@ CreateDialog.User.prototype.initFormConfig = function() {
       editor: "Text",
       size: '10ex',
       required: true,
+      visualizeRequired: true,
       set: UserModel.prototype.setLoginName
     }
   });
