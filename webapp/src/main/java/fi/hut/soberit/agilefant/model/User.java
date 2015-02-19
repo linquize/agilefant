@@ -353,7 +353,7 @@ public class User implements NamedObject {
 
     @JSON
     @NotAudited
-    @Column(columnDefinition = "bit default 0")
+    @Column(columnDefinition = "bit default 1")
     public boolean isAutoassignToStories() {
         return autoassignToStories;
     }
