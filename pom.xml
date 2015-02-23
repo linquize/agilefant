@@ -25,7 +25,7 @@
 		<glassfish.jstl.version>1.2</glassfish.jstl.version>
 		<guava.version>13.0.1</guava.version>
 		<h2.version>1.1.114</h2.version>
-		<hibernate.version>4.2.8.Final</hibernate.version>
+		<hibernate.version>4.2.18.Final</hibernate.version>
 		<hibernate.validator.version>4.3.1.Final</hibernate.validator.version>
 		<httpclient.version>4.1.3</httpclient.version>
 		<javax.annotation.version>1.0</javax.annotation.version>
