@@ -4,7 +4,7 @@
 
 	<groupId>fi.soberit.agilefant</groupId>
 	<artifactId>agilefant-parent</artifactId>
-	<version>3.5.2</version>
+	<version>3.5.3</version>
 	<packaging>pom</packaging>
 	<name>Agilefant :: Parent POM</name>
 
