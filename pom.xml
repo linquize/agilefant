@@ -43,8 +43,8 @@
 		<oro.version>2.0.8</oro.version>
 		<poi.version>3.9</poi.version>
 		<slf4j.version>1.7.2</slf4j.version>
-		<spring.version>3.2.8.RELEASE</spring.version>
-		<spring.security.version>3.2.3.RELEASE</spring.security.version>
+		<spring.version>3.2.13.RELEASE</spring.version>
+		<spring.security.version>3.2.5.RELEASE</spring.security.version>
 		<stringtemplate.version>3.0</stringtemplate.version>
 		<struts.version>2.3.14.2</struts.version>
 		<typesafe.config.version>1.0.0</typesafe.config.version>
