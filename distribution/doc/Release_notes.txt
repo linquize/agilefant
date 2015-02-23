@@ -1,18 +1,42 @@
-Agilefant 3.5.2
+Agilefant 3.5.3
 Release notes
-2014-05-02
+2015-02-23
 --
 
 Please spend a couple of minutes to register your organization at
 http://tinyurl.com/agilefant-registration-2013
-This helps us keep Agilefant open source and free forever!
 
-Agilefant is now available as a hosted cloud version at
-http://agilefant.com/free-trial/
+If you need support for your open source Agilefant version, we also offer support via the Agilefant development team. See more details at http://agilefant.com/pricing/open-source-version-support/?utm_source=rel_notes&utm_campaign=3.5.3
+
+Getting a support contract is also a great way to support Agilefant development efforts.
+
+That helps us keep Agilefant open source forever.!
+
+Agilefant is now also available as a hosted cloud version at
+http://agilefant.com/sign-up/
 
 +--------------------+
 |     CHANGESET      |
 +--------------------+
+
+Changes from 3.5.2
+2015-02-23
+Bug fixes:
++ Fix burnup and burndown graphs (were not working at all on some servers)
++ Security fix: Prevent non-admins from changing admin value
++ Fix database import (on Windows Google Chrome there was "Content-Type not allowed" error)
++ Fix leaf stories tab: show story labels and task spent effort immediately (without modifying the story or task)
++ Fix left menu to show all backlogs if the backlogs list is long
++ Fix removing selected backlog in create new menu
+
+Usability improved:
++ My work, Reporting, and Dashboards Automatically enabled for new and existing accounts
++ Admin users can now see all backlogs, even if his team(s) does not have access rights to the backlog
++ When creating new user, add the user by default to all teams if creator is admin, or to creator's teams if creator is non-admin
++ Moving stories from one backlog to another speeded up
++ Renamed Daily Work tab to My Work
++ Renamed Portfolio & Dashboards tab to Dashboards
++ Renamed Timesheets tab to Reporting
 
 Changes from 3.5.1
 2014-05-02
