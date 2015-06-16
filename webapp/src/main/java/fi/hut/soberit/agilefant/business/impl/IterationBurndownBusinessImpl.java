@@ -445,6 +445,7 @@ public class IterationBurndownBusinessImpl implements IterationBurndownBusiness 
             
             double current = valueAxis.getRange().getUpperBound();
             current = Double.isNaN(current) ? 0 : current;
+            current = current > 0 ? current : 1; // setRange(0, 0) will cause endless loop, so set 1 hr
             valueAxis.setRange(0, Math.max(current, Math.max(spentMax, leftMax)));
         }
 
