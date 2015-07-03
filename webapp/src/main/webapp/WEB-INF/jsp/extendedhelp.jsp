@@ -2,7 +2,7 @@
 
 <struct:htmlWrapper navi="none" hideControl="true" hideMenu="true" hideLogout="true" hidecreateAndSearchWrapper="true">
 
-<h2>Welcome to Agilefant!</h2>
+<h2>Agilefant Help</h2>
 
 <style type="text/css">
 p.infoBox {
