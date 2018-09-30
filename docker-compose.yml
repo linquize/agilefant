@@ -1,0 +1,16 @@
+version: '3'
+services:
+  web:
+    depends_on:
+      - db
+    build: .
+    image: "agilefant"
+    ports:
+      - "8080:8080"
+  db:
+    image: "mysql:5"
+    environment:
+      MYSQL_ROOT_PASSWORD: agilefant
+      MYSQL_DATABASE: agilefant
+      MYSQL_USER: agilefant
+      MYSQL_PASSWORD: agilefant
